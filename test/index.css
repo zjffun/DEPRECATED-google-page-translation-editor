@@ -1,0 +1,61 @@
+.gpte{
+  width: 100%;
+  height: 100%;
+}
+.gpte, .gpte *{
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+}
+.gpte-toolbar{
+  border-bottom: 1px solid #d4d4d4;
+  background-color: #fafafa;
+  background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
+  background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+  background-repeat: repeat-x;
+  border: 1px solid #d4d4d4;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
+  *zoom: 1;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+.gpte-toolbar ul{
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 5px;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+.gpte-toolbar ul li{
+  display: inline-block;
+  padding: 3px 5px;
+  border: 1px #000 dotted;
+  cursor: pointer;
+}
+.gpte-toolbar ul li:hover{
+  background-color: #fff5d4;
+  border: 1px solid #dcac6c;
+}
+.gpte-page{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #d4d4d4;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}
+.gpte-page iframe{
+  float: left;
+  display: block;
+  width: 50%;
+  height: 100%;
+}

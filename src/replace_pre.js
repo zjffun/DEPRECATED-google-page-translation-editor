@@ -6,6 +6,6 @@ export default function($ori, $trans){
     pre_tag.push($(this).html());
   })
   $('pre', $trans.contents()).each(function(index, element){
-    $(element).html(pre_html[index]);
+    $(element).html(pre_tag[index]);
   })
 }

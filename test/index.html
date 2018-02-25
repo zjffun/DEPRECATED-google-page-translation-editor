@@ -4,78 +4,17 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
-  <script src="../dist/gpte.js"></script>
-  <style>
-    .gpte{
-      width: 100%;
-      height: 100%;
-    }
-    .gpte, .gpte *{
-      box-sizing:border-box;
-      -moz-box-sizing:border-box;
-      -webkit-box-sizing:border-box;
-    }
-    .gpte-toolbar{
-      border-bottom: 1px solid #d4d4d4;
-      background-color: #fafafa;
-      background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
-      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
-      background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
-      background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
-      background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
-      background-repeat: repeat-x;
-      border: 1px solid #d4d4d4;
-      -webkit-border-radius: 4px 4px 0 0;
-      -moz-border-radius: 4px 4px 0 0;
-      border-radius: 4px 4px 0 0;
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
-      *zoom: 1;
-      -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-      -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-    }
-    .gpte-toolbar ul{
-      list-style: none;
-      width: 100%;
-      margin: 0;
-      padding: 5px;
-      font-size: 1rem;
-      line-height: 1rem;
-    }
-    .gpte-toolbar ul li{
-      display: inline-block;
-      padding: 3px 5px;
-      border: 1px #000 dotted;
-      cursor: pointer;
-    }
-    .gpte-toolbar ul li:hover{
-      background-color: #fff5d4;
-      border: 1px solid #dcac6c;
-    }
-    .gpte-page{
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      border: 1px solid #d4d4d4;
-      -webkit-border-radius: 0 0 4px 4px;
-      -moz-border-radius: 0 0 4px 4px;
-      border-radius: 0 0 4px 4px;
-    }
-    .gpte-page iframe{
-      float: left;
-      display: block;
-      width: 50%;
-      height: 100%;
-    }
-  </style>
+  <script src="/dist/gpte.js"></script>
+  <link rel="stylesheet" href="/test/index.css">
 </head>
 <body>
   网址：<input id="gpte-url" type="text" placeholder="eg：https://d3js.org/">
-  <button onclick="gpte.set_url($('#gpte-ori'), $('#gpte-trans'), $('#gpte-url').val())">设置</button>
+  <button onclick="gpte.set_url($('#gpte-ori'), $('#gpte-trans'), $('#gpte-url').val(), 'page', 'http://127.0.0.1:8848/get_page')">加载网址</button>|<button onclick="$('#gpte-ori').attr('src', 'page/default/index.html');$('#gpte-trans').attr('src', 'page/default/index_trans.html');">查看样例</button>
   <div id="gpte-container" style="width: 100%; height: 600px">
     <div class="gpte">
       <div class="gpte-toolbar">
         <ul>
+          <li onclick="gpte.binding_scroll($('#gpte-ori'), $('#gpte-trans'))" title="用原网页pre标签的内容替换翻译后的pre标签的内容">左右页面滚动条双向绑定</li>
           <li onclick="gpte.replace_pre($('#gpte-ori'), $('#gpte-trans'))" title="用原网页pre标签的内容替换翻译后的pre标签的内容">修正pre标签排版bug</li>
           <li title="将pre标签中的换行替换为<br>">使HTML页面压缩后pre标签排版不变</li>
         </ul>

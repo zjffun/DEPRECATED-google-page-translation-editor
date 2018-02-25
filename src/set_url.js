@@ -1,6 +1,8 @@
 import $ from 'jquery';
-export default function($ori, $trans, url){
-  $ori.attr('src', url);
-  // 这里得合成谷歌翻译的url，然后加载去掉工具条的iframe
-  $trans.attr('src', url);
+export default function($ori, $trans, url, page_dir, get_page_url){
+  $.get(get_page_url, { page_dir: page_dir, url: url }, function(data){
+    alert(data.error);
+    $ori.attr('src', data.ori_url);
+    $trans.attr('src', data.trans_url);
+  },'json');
 }
