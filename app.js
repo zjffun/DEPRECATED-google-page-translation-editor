@@ -4,7 +4,6 @@ var cheerio = require('cheerio');
 var fs = require('fs');
 var url = require('url');
 var mkdirp = require('mkdirp');
-var swig = require('swig')
 
 const TRANS_URL_PREFIX = 'https://translate.googleusercontent.com/translate_c?depth=1&hl=zh-CN&ie=UTF8&prev=_t&rurl=translate.google.com.hk&sl=en&sp=nmt4&tl=zh-CN&u='
 
@@ -13,13 +12,10 @@ var app = express();
 app.use('/dist', express.static(__dirname + '/dist'));
 app.use('/page', express.static(__dirname + '/page'));
 app.use('/test', express.static(__dirname + '/test'));
-app.engine('html', swig.renderFile);
-app.set('views', './test');
-app.set('view engine', 'html');
-swig.setDefaults({cache: false});
 
 app.get('/',function(req, res, next){
-  res.render('index')
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.end(fs.readFileSync(__dirname + '/test/index.html'));
 })
 
 app.get('/get_page',function(req, res, next){
