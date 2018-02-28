@@ -18,13 +18,14 @@
   "homepage": "https://github.com/1010543618/google-page-translation-editor#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "rollup": "^0.56.2"
+    "rollup": "^0.56.2",
+    "rollup-plugin-node-resolve": "^3.0.3"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.2",
     "jquery": "^3.3.1",
-    "jquery-scrollsync": "^1.0.1",
+    "jquery-scrollsync": "^1.0.3",
     "mkdirp": "^0.5.1",
     "request": "^2.83.0",
     "swig": "^1.4.2"

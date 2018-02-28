@@ -1,3 +1,5 @@
+import resolve from 'rollup-plugin-node-resolve';
+
 export default {
   input: 'index.js',
   external: ['jquery'],
@@ -8,5 +10,6 @@ export default {
     globals: {
       jquery: '$'
     }
-  }
+  },
+  plugins: [ resolve() ]
 }
