@@ -19,6 +19,7 @@ app.get('/',function(req, res, next){
 })
 
 app.get('/get_page',function(req, res, next){
+  console.log('get_page');
   var url_str = req.query.url;
   var page_dir = req.query.page_dir;
 
@@ -64,8 +65,34 @@ app.get('/get_page',function(req, res, next){
         return;
       }
     });
-    // 获取翻译后（很难下载到本地，先不下载了，直接放上原来的。。）
-    res.send({ori_url: path + 'index.html', trans_path:  path + 'index.html'});
+    // 获取翻译后
+    /* 原本想着直接获取谷歌翻译页面的结果
+    然后去掉外层谷歌页面翻译自带的导航条
+    但谷歌没有直接返回翻译的结果，而是返回的页面执行js动态加载翻译的结果
+    感觉用node执行页面js然后获取数据非常麻烦就搁置了。
+    最近偶然发现谷歌翻译页面返回的html保存到本地可以使用iframe加载
+    所以就直接将返回的html保存到本地文件
+    用本地的主页的iframe打开刚刚保存的html文件
+    这样既解决了翻译结果的获取，又解决的非同源无法翻译结果的问题
+    可喜可贺，可喜可贺？
+    可能是科学上网的姿势不对，请求trans_url_str失败。。
+    */
+    request(trans_url_str, function (error, response, html) {
+      if (error) {
+        console.log(trans_url_str, error);
+        res.send({'error': '获取google翻译的页面失败，可能是因为没有科学上网被GFW拦截。。点击查看样例查看已经保存到本地的样例页面'});
+        return;
+      }
+      fs.writeFile(path + 'index_trans.html', html,  function(error) {
+        if (error) {
+          res.send({'error': '写入文件失败'});
+          return;
+        }
+      });
+      res.send({ori_url: path + 'index.html', trans_path: path + 'index_trans.html'});
+    })
+
+    // 《废弃的!!!》
     /*禁止使用iframe加载。。
     res.send({ori_url: path + 'index.html', trans_path: trans_url_str});*/
     /*全是动态生成的页面，要么分析JS找到如何生成iframe，要么就得用PhantomJs。。

@@ -40,7 +40,7 @@
   border: 1px #000 dotted;
   cursor: pointer;
 }
-.gpte-toolbar ul li:hover{
+.gpte-toolbar ul li:hover, .gpte-toolbar ul li.active{
   background-color: #fff5d4;
   border: 1px solid #dcac6c;
 }
