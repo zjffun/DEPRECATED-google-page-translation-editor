@@ -1,6 +1,6 @@
 {
   "name": "google-page-translation-editor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A online editor for the google translated HTML page .",
   "main": "index.js",
   "scripts": {
