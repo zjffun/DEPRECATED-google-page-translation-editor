@@ -1,8 +1,8 @@
 import $ from 'jquery';
-import reset_toolbar from '../reset_toolbar';
 import reset_style_and_uncheck from './reset_style_and_uncheck';
-export default function($ori, $trans){
-  reset_style_and_uncheck($ori.contents().find('[gpte_not_trans]'));
-  reset_style_and_uncheck($trans.contents().find('[gpte_not_trans]'));
-  reset_toolbar();
+export default function(){
+  reset_style_and_uncheck(this.ori_contents.find('[gpte_not_trans]'));
+  reset_style_and_uncheck(this.trans_contents.find('[gpte_not_trans]'));
+  this.ori_contents.unbind('click', this.data.correct_not_trans.ori_click);
+  this.trans_contents.unbind('click', this.data.correct_not_trans.trans_click);
 }

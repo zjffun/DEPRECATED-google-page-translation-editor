@@ -9,27 +9,29 @@
 </head>
 <body>
   网址：<input id="gpte-url" type="text" placeholder="eg：https://d3js.org/">
-  <button onclick="gpte.set_url($('#gpte-ori'), $('#gpte-trans'), $('#gpte-url').val(), 'page', 'http://127.0.0.1:8848/get_page')">加载网址(需要计算机能连接google翻译)</button>|<button onclick="$('#gpte-ori').attr('src', 'page/default/index.html');$('#gpte-trans').attr('src', 'page/default/index_trans.html');">查看样例(本地样例，无需联网)</button>|<button onclick="$('#gpte-ori').attr('src', 'page/default1/index.html');
-  $('#gpte-trans').attr('src', 'page/default1/index_trans.html');">查看样例(需要浏览器能连接google翻译)</button>
+  <button onclick="test_gpte.set_url($('#gpte-url').val(), 'page', 'http://127.0.0.1:8848/get_page')">加载网址(需要服务器能连接google翻译)</button>|<button onclick="$('#gpte-ori').attr('src', 'page/default/index.html');$('#gpte-trans').attr('src', 'page/default/index_trans.html');">查看样例(本地样例，无需联网)</button>
   <div id="gpte-container" style="width: 100%; height: 550px">
     <div class="gpte">
       <div class="gpte-toolbar">
+        预处理：
         <ul>
-          <li onclick="gpte.binding_scroll($('#gpte-ori'), $('#gpte-trans'),  $(this).hasClass('active')); $(this).toggleClass('active');" title="用原网页pre标签的内容替换翻译后的pre标签的内容">左右页面滚动条相互绑定</li>
-          <li onclick="gpte.edit($('#gpte-trans'), $(this).hasClass('active')); $(this).toggleClass('active')">编辑</li>
-          <li onclick="gpte.replace_pre($('#gpte-ori'), $('#gpte-trans'))" title="用原网页pre标签的内容替换翻译后的pre标签的内容">修正pre标签排版bug</li>
-          <li onclick="gpte.replace_pre_br($('#gpte-trans'))" title="将pre标签中的换行替换为<br>，空格替换为&amp;ensp;，制表符替换为&amp;ensp;&amp;ensp;">使HTML页面压缩后pre标签排版不变</li>
-          <li onclick="gpte.remove_google_tooltip($('#gpte-trans'))" title="每次页面加载都会自动添加google翻译的工具提示，所以应该在保存前去掉google翻译的工具提示（保存前会自动去除）">去掉google翻译的工具提示</li>
-
-          <li title="将翻译后网页的元素替换为选择的原网页的元素">修正不翻译的元素：
-            <button onclick="gpte.correct_not_trans.select($('#gpte-ori'), $('#gpte-trans'))" >选择元素</button>
-            <button onclick="gpte.correct_not_trans.correct($('#gpte-ori'), $('#gpte-trans'))" >进行修正</button>
-            <button onclick="gpte.correct_not_trans.clear($('#gpte-ori'), $('#gpte-trans'))" >清除选择</button>
+          <li onclick="test_gpte.replace_pre()" title="用原网页pre标签的内容替换翻译后的pre标签的内容">修正pre标签排版bug</li>
+          <li onclick="test_gpte.replace_pre_br()" title="将pre标签中的换行替换为<br>，空格替换为&amp;ensp;，制表符替换为&amp;ensp;&amp;ensp;">使HTML页面压缩后pre标签排版不变</li>
+        </ul>
+        功能：
+        <ul>
+          <li onclick="test_gpte.binding_scroll(); $(this).toggleClass('active');" title="用原网页pre标签的内容替换翻译后的pre标签的内容">左右页面滚动条相互绑定</li>
+          <li onclick="test_gpte.edit(); $(this).toggleClass('active')">编辑</li>
+          <li title="将翻译后网页的元素替换为选择的原网页的元素">
+            修正不翻译的元素：
+            <button onclick="test_gpte.correct_not_trans('select')" >选择元素</button>
+            <button onclick="test_gpte.correct_not_trans('correct')" >进行修正</button>
+            <button onclick="test_gpte.correct_not_trans('clear')" >清除选择</button>
           </li>
-          
-          
-          
-          <li onclick="gpte.reset_toolbar()" title="">重置工具条</li>
+        </ul>
+        保存前处理：
+        <ul>
+            <li onclick="test_gpte.remove_google_tooltip()" title="每次页面加载都会自动添加google翻译的工具提示，所以应该在保存前去掉google翻译的工具提示（保存前会自动去除）">去掉google翻译的工具提示</li>
         </ul>
       </div>
       <div class="gpte-page">
@@ -38,5 +40,11 @@
       </div>
     </div>
   </div>
+  <script>
+    var test_gpte = gpte.init({
+      $ori: $('#gpte-ori'), 
+      $trans: $('#gpte-trans')
+    })
+  </script>
 </body>
 </html>

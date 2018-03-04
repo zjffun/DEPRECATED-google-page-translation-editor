@@ -1,11 +1,11 @@
 import $ from 'jquery';
-export default function($ori, $trans){
+export default function(){
   // 得在一个源下才行，要用nodejs了。。
   var pre_tag = [];
-  $('pre', $ori.contents()).each(function(){
+  this.ori_contents.find('pre').each(function(){
     pre_tag.push($(this).html());
   })
-  $('pre', $trans.contents()).each(function(index, element){
+  this.trans_contents.find('pre').each(function(index, element){
     $(element).html(pre_tag[index]);
   })
 }

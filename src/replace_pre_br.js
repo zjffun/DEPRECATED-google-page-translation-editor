@@ -1,5 +1,5 @@
-export default function($trans){
-  $('pre', $trans.contents()).each(function(){
+export default function(){
+  $('pre', this.trans_contents).each(function(){
 
     var allChildNodes = function(node, type){
       // 1.创建全部节点的数组
