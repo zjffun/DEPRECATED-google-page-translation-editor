@@ -1,4 +1,4 @@
-# google-page-translation-editor
+# 【deprecated】google-page-translation-editor
 A online editor for the google translated HTML page.
 
 ## 主要功能介绍
